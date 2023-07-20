@@ -518,7 +518,7 @@ int main(int argc, char **argv)
 
             // publish odometry
             nav_msgs::Odometry laserOdometry;
-            laserOdometry.header.frame_id = "/camera_init";
+            laserOdometry.header.frame_id = "camera_init";
             laserOdometry.child_frame_id = "/laser_odom";
             laserOdometry.header.stamp = ros::Time().fromSec(timeSurfPointsLessFlat);
             laserOdometry.pose.pose.orientation.x = q_w_curr.x();
@@ -535,7 +535,7 @@ int main(int argc, char **argv)
             laserPose.pose = laserOdometry.pose.pose;
             laserPath.header.stamp = laserOdometry.header.stamp;
             laserPath.poses.push_back(laserPose);
-            laserPath.header.frame_id = "/camera_init";
+            laserPath.header.frame_id = "camera_init";
             pubLaserPath.publish(laserPath);
 
             // transform corner features and plane features to the scan end point
